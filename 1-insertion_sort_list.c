@@ -5,24 +5,21 @@
  * @list: pointer to double linked list
  * @prev: previous node
  * @curr: current node
- */
+ **/
 
 void swap(listint_t **list, listint_t *prev, listint_t *curr)
 {
-	listint_t *next = curr->next;
-
-	if (prev->prev)
-		prev->prev->next = curr;
+	prev->next = curr->next;
+	if (curr->next)
+		curr->next->prev = prev;
 	curr->prev = prev->prev;
 	curr->next = prev;
-	prev->prev = curr;
-	prev->next = next;
-	if (next)
-		next->prev = prev;
-	if (curr->prev)
-		curr->prev->next = curr;
+	if (prev->prev)
+		prev->prev->next = curr;
 	else
 		*list = curr;
+	prev->prev = curr;
+	prev = curr->prev;
 }
 
 /**
