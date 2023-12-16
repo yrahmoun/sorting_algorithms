@@ -42,9 +42,8 @@ void insertion_sort_list(listint_t **list)
 		while (curr->prev && curr->prev->n > curr->n)
 		{
 			swap(list, curr->prev, curr);
-			print_list(*list);
+			print_list((const listint_t *)*list);
 		}
 		curr = curr->next;
 	}
 }
-
